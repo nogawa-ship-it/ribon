@@ -38,7 +38,7 @@
                 </div>
                 <div>
                     <h1 class="text-2xl font-black text-gray-900 tracking-tight">リボン計算システム</h1>
-                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">Ribbon Calculation v1.2</p>
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">Ribbon Calculation v1.3</p>
                 </div>
             </div>
             <button onclick="copyToClipboard()" class="btn-active w-full md:w-auto bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-bold py-3 px-6 rounded-xl shadow-sm transition-all flex items-center justify-center">
@@ -154,34 +154,60 @@
     </div>
 
     <script>
+        // colorプロパティを追加しました
         const ribbonData = {
-            "0": { name: "No.0 (別注)", len: 2250, alert: false },
-            "1": { name: "No.1", len: 2250, alert: false }, "2": { name: "No.2", len: 2250, alert: false },
-            "3": { name: "No.3", len: 2250, alert: true },  "4": { name: "No.4", len: 2250, alert: false },
-            "5": { name: "No.5", len: 2250, alert: false }, "6": { name: "No.6", len: 2250, alert: false },
-            "7": { name: "No.7", len: 2250, alert: false }, "8": { name: "No.8", len: 2250, alert: false },
-            "9": { name: "No.9", len: 2250, alert: false }, "10": { name: "No.10", len: 2250, alert: false },
-            "11": { name: "No.11", len: 2250, alert: true }, "12": { name: "No.12", len: 2250, alert: false },
-            "13": { name: "No.13", len: 2250, alert: false }, "14": { name: "No.14", len: 2250, alert: true },
-            "15": { name: "No.15", len: 2250, alert: false }, "16": { name: "No.16", len: 2250, alert: false },
-            "17": { name: "No.17", len: 2250, alert: false }, "18": { name: "No.18", len: 2250, alert: true },
-            "19": { name: "No.19", len: 2250, alert: false }, "20": { name: "No.20", len: 2250, alert: false },
-            "21": { name: "No.21", len: 2250, alert: false }, "22": { name: "No.22", len: 2250, alert: false },
-            "23": { name: "No.23", len: 2250, alert: false }, "24": { name: "No.24", len: 2250, alert: false },
-            "25": { name: "No.25", len: 2250, alert: false },
-            "26": { name: "No.26", len: 1500, alert: false }, "27": { name: "No.27", len: 1500, alert: false },
-            "28": { name: "No.28", len: 1500, alert: false }, "29": { name: "No.29", len: 1500, alert: false },
-            "30": { name: "No.30", len: 1500, alert: false }, "31": { name: "No.31", len: 1500, alert: false },
-            "32": { name: "No.32", len: 1500, alert: false }, "33": { name: "No.33", len: 1500, alert: false },
-            "34": { name: "No.34", len: 1500, alert: false }, "35": { name: "No.35", len: 1500, alert: true },
-            "36": { name: "No.36", len: 1500, alert: false }, "37": { name: "No.37", len: 1500, alert: false },
-            "38": { name: "No.38", len: 1200, alert: false }, "39": { name: "No.39", len: 1200, alert: false },
-            "40": { name: "No.40", len: 1200, alert: false }, "41": { name: "No.41", len: 1200, alert: false },
-            "42": { name: "No.42", len: 1200, alert: false }, "43": { name: "No.43", len: 1200, alert: false },
-            "44": { name: "No.44", len: 1200, alert: false }, "45": { name: "No.45", len: 1200, alert: false },
-            "46": { name: "No.46", len: 1200, alert: false }, "47": { name: "No.47", len: 1200, alert: false },
-            "48": { name: "No.48", len: 1200, alert: false }, "49": { name: "No.49", len: 1200, alert: false },
-            "50": { name: "No.50", len: 1200, alert: false }, "51": { name: "No.51", len: 1200, alert: false }
+            "0": { name: "No.0 (別注)", color: "", len: 2250, alert: false },
+            "1": { name: "No.1", color: "白", len: 2250, alert: false },
+            "2": { name: "No.2", color: "肌色", len: 2250, alert: false },
+            "3": { name: "No.3", color: "黄", len: 2250, alert: true },  
+            "4": { name: "No.4", color: "山吹", len: 2250, alert: false },
+            "5": { name: "No.5", color: "オレンジ", len: 2250, alert: false }, 
+            "6": { name: "No.6", color: "桃", len: 2250, alert: false },
+            "7": { name: "No.7", color: "赤", len: 2250, alert: false }, 
+            "8": { name: "No.8", color: "円地", len: 2250, alert: false },
+            "9": { name: "No.9", color: "ピンク", len: 2250, alert: false }, 
+            "10": { name: "No.10", color: "藤", len: 2250, alert: false },
+            "11": { name: "No.11", color: "紫", len: 2250, alert: true }, 
+            "12": { name: "No.12", color: "うす水", len: 2250, alert: false },
+            "13": { name: "No.13", color: "水色", len: 2250, alert: false }, 
+            "14": { name: "No.14", color: "うす紺", len: 2250, alert: true },
+            "15": { name: "No.15", color: "紺", len: 2250, alert: false }, 
+            "16": { name: "No.16", color: "濃紺", len: 2250, alert: false },
+            "17": { name: "No.17", color: "うすグリーン", len: 2250, alert: false }, 
+            "18": { name: "No.18", color: "緑", len: 2250, alert: true },
+            "19": { name: "No.19", color: "濃グリーン", len: 2250, alert: false }, 
+            "20": { name: "No.20", color: "ブルー", len: 2250, alert: false },
+            "21": { name: "No.21", color: "グレー", len: 2250, alert: false }, 
+            "22": { name: "No.22", color: "黒", len: 2250, alert: false },
+            "23": { name: "No.23", color: "うす茶", len: 2250, alert: false }, 
+            "24": { name: "No.24", color: "茶", len: 2250, alert: false },
+            "25": { name: "No.25", color: "こげ色", len: 2250, alert: false },
+            "26": { name: "No.26", color: "白", len: 1500, alert: false }, 
+            "27": { name: "No.27", color: "グレー", len: 1500, alert: false },
+            "28": { name: "No.28", color: "黒", len: 1500, alert: false }, 
+            "29": { name: "No.29", color: "こげ茶", len: 1500, alert: false },
+            "30": { name: "No.30", color: "濃グリーン", len: 1500, alert: false }, 
+            "31": { name: "No.31", color: "あずき", len: 1500, alert: false },
+            "32": { name: "No.32", color: "山吹", len: 1500, alert: false }, 
+            "33": { name: "No.33", color: "うす茶", len: 1500, alert: false },
+            "34": { name: "No.34", color: "濃茶", len: 1500, alert: false }, 
+            "35": { name: "No.35", color: "うす紺", len: 1500, alert: true },
+            "36": { name: "No.36", color: "赤", len: 1500, alert: false }, 
+            "37": { name: "No.37", color: "緑", len: 1500, alert: false },
+            "38": { name: "No.38", color: "紺", len: 1200, alert: false }, 
+            "39": { name: "No.39", color: "うす水", len: 1200, alert: false },
+            "40": { name: "No.40", color: "ブルー", len: 1200, alert: false }, 
+            "41": { name: "No.41", color: "", len: 1200, alert: false },
+            "42": { name: "No.42", color: "", len: 1200, alert: false }, 
+            "43": { name: "No.43", color: "", len: 1200, alert: false },
+            "44": { name: "No.44", color: "", len: 1200, alert: false }, 
+            "45": { name: "No.45", color: "", len: 1200, alert: false },
+            "46": { name: "No.46", color: "", len: 1200, alert: false }, 
+            "47": { name: "No.47", color: "", len: 1200, alert: false },
+            "48": { name: "No.48", color: "", len: 1200, alert: false }, 
+            "49": { name: "No.49", color: "", len: 1200, alert: false },
+            "50": { name: "No.50", color: "", len: 1200, alert: false }, 
+            "51": { name: "No.51", color: "", len: 1200, alert: false }
         };
 
         function initRibbons() {
@@ -189,7 +215,9 @@
             Object.keys(ribbonData).forEach(id => {
                 const opt = document.createElement('option');
                 opt.value = id;
-                opt.text = `${ribbonData[id].name} (${ribbonData[id].len}m)`;
+                // 色が設定されている場合のみ表示する処理を追加
+                const colorText = ribbonData[id].color ? ` 【${ribbonData[id].color}】` : "";
+                opt.text = `${ribbonData[id].name}${colorText} (${ribbonData[id].len}m)`;
                 select.add(opt);
             });
         }
